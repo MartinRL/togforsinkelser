@@ -35,11 +35,12 @@ namespace OpenAPISampleNET
 
             try
             {
+                string apiKey = System.IO.File.ReadAllText(Environment.CurrentDirectory + "\\" + "api.key");
                 // API server url
                 Uri address = new Uri("http://api.trafikinfo.trafikverket.se/v1/data.xml");
                 string requestBody = "<REQUEST>" +
                     // Use your valid authenticationkey
-                                        "<LOGIN authenticationkey='yourAuthenticationKey'/>" +
+                                        "<LOGIN authenticationkey='" + apiKey + "'/>" +
                                         "<QUERY objecttype='TrainMessage' >" +
                                             "<FILTER>" +
                                                 "<IN name='AffectedLocation' value='Blg'/>" +
